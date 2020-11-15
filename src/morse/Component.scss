@@ -1,0 +1,11 @@
+.morse{
+
+    .flash {
+        height: 60px;
+        width: 60px;
+        background-image: url(bulb2.png) ;
+        &.highlight {
+            background-image: url(bulb.png) ;    
+        }
+    }
+}

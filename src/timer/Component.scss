@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Digital 7";
+    src: url(digital-7.ttf);
+  }
+
+.Timer{
+    font-size: 60px;
+    color : #DC143C;
+    font-family: "Digital 7", serif;
+    margin: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    &.warning{
+        background-color: #FF9999;
+    }
+}

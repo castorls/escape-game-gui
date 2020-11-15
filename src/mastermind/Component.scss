@@ -1,0 +1,63 @@
+.mastermind {
+    .droppable{
+        background-color: red; 
+    
+        &.choiceContainer{
+            background-color: green;
+        }
+        &.all-colors{
+            width: 250px;
+            margin: auto;
+        }
+    }
+
+    .colorContainer, .choiceContainer, .resultContainer{ 
+        margin:auto;
+        display: inline-block;
+        width: 60px;
+    }
+
+    .choices, .check-results{
+        margin: auto;
+    }
+
+    .choiceContainer, .resultContainer{
+        border: 3px dashed  #AAAAAA;
+        height : 60px;
+        margin: 5px;
+        vertical-align: middle;
+    }
+
+    .colorTarget {
+        color:  #AAAAAA;
+        display: inline-block;
+    }
+    .color {
+        border : 1px solid black;
+        width:40px;
+        height:40px;
+        border-radius: 20px;
+        margin: 5px;
+        text-align: center;;
+        &.RED { background-color:#FF0000}
+        &.YELLOW { background-color:#FFFF00}
+        &.BLUE { background-color:#0000FF}
+        &.ORANGE { background-color:#FFA500}
+        &.GREEN { background-color:#00FF00}
+        &.WHITE { background-color:#FFFFFF}
+        &.PURPLE { background-color:#FF00FF}
+        &.ROSE { background-color:#FFC0CB}
+    }
+
+    .resultContainer {
+        .result {
+            background-image: url(traffic-light.png);
+            height:40px;
+            width: 40px;
+            margin: 10px 8px;
+            &.result-none{ background-position: 0 0 }
+            &.result-true{ background-position: 40px 0}
+            &.result-false{ background-position: 80px 0}
+        } 
+    }
+}
