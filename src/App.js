@@ -11,11 +11,24 @@ axios.defaults.baseURL = 'http://localhost:8080/RestWebapp/'
 // The Main Subject/Stream to be listened on.
 const sseSubject = new Subject()
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        timerEnd: false,
+    }
+}
+
   componentDidMount() {
     let eventSource = new EventSource(axios.defaults.baseURL + "stream")
     eventSource.onmessage = e => { 
       console.log(e); 
-      sseSubject.next(e)
+      sseSubject.next(e);
+      if(e.lastEventId === "timerEvent"){
+        if(e.data === "timer end"){
+          this.setState({ timerEnd: true});
+        }
+      }
     }
   }
 
@@ -31,14 +44,18 @@ class App extends Component {
         <Timer sseSubject={sseSubject} />
       </div>
       <div className="row">
-          <div className="col-md-3">
-            <Mastermind sseSubject={sseSubject} />
-          </div>
-          <div className="col-md-3">
-            <Morse sseSubject={sseSubject} />
-          </div>
+        <div className="col-md-3">
+          <Mastermind sseSubject={sseSubject} />
         </div>
-      </div>
+        <div className="col-md-3">
+          <Morse sseSubject={sseSubject} />
+        </div>
+       </div>
+       <div className={"boom "+(this.state.timerEnd?"displayed":"")}>
+        <img className="image" alt="" />
+        Boom !!!
+       </div>
+     </div>
   }
 }
 
